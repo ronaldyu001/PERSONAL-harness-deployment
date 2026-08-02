@@ -12,7 +12,6 @@ services:
       - mem0:/home/appuser/.mem0
     environment:
       OLLAMA_BASE_URL: ${OLLAMA_BASE_URL}
-      OLLAMA_MODEL: ${OLLAMA_MODEL}
       OLLAMA_TIMEOUT: ${OLLAMA_TIMEOUT}
       LITELLM_BASE_URL: ${LITELLM_BASE_URL}
       LITELLM_API_KEY: ${LITELLM_API_KEY}
