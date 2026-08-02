@@ -29,6 +29,8 @@ services:
     depends_on:
       litellm:
         condition: service_healthy
+      ollama-pull-embedder:
+        condition: service_completed_successfully
       qdrant:
         condition: service_started
     healthcheck:
@@ -92,9 +94,18 @@ services:
       ollama:
         condition: service_healthy
     environment:
-      # Point the one-shot Ollama CLI container at the long-running Ollama service.
       OLLAMA_HOST: ${OLLAMA_BASE_URL}
     command: ["pull", "${OLLAMA_MODEL}"]
+    restart: "no"
+
+  ollama-pull-embedder:
+    image: ollama/ollama:0.31.1
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: ${OLLAMA_BASE_URL}
+    command: ["pull", "${MEM0_EMBEDDER_MODEL}"]
     restart: "no"
 
   qdrant:
