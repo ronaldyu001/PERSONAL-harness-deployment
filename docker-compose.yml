@@ -19,6 +19,8 @@ services:
       LITELLM_MAX_RETRIES: ${LITELLM_MAX_RETRIES}
       AGENT_SUMMARY_TRIGGER_TOKENS: ${AGENT_SUMMARY_TRIGGER_TOKENS:-5000}
       AGENT_SUMMARY_KEEP_MESSAGES: ${AGENT_SUMMARY_KEEP_MESSAGES:-8}
+      AGENT_CONTEXT_LOGGING: ${AGENT_CONTEXT_LOGGING:-off}
+      AGENT_CONTEXT_LOG_DIR: ${AGENT_CONTEXT_LOG_DIR:-/app/.logs}
       CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS:-http://localhost:5173,http://127.0.0.1:5173,http://tauri.localhost,tauri://localhost}
       QDRANT_URL: ${QDRANT_URL}
       MEM0_QDRANT_URL: ${MEM0_QDRANT_URL}
@@ -55,7 +57,7 @@ services:
     ports:
       - "4000:4000"
     environment:
-      LITELLM_OLLAMA_MODEL: ollama/${OLLAMA_MODEL}
+      LITELLM_OLLAMA_MODEL: ollama_chat/${OLLAMA_MODEL}
     # Map litellm config to the container path as read only.
     volumes:
       - ./LiteLLM_config.yaml:/app/config.yaml:ro
