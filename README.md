@@ -15,7 +15,7 @@ models that it must pull.
 | `docker-compose.yml` | CPU-compatible service topology |
 | `docker-compose.gpu.yml` | Optional NVIDIA override |
 | `LiteLLM_config.yaml` | LiteLLM model aliases and routing |
-| Backend `infrastructure/config.yaml` | Agent, gateway, logging, and memory tuning |
+| Backend `infrastructure/config.yaml` | Agent, gateway, logging, memory, and web-search tuning |
 
 Do not commit `.env`. This repository currently tracks that file, so `.gitignore`
 alone will not protect future edits; untrack it separately before committing
